@@ -16,7 +16,7 @@ login_button.click()
 first_price = driver.find_element(By.CLASS_NAME,"inventory_item_price")
 prices = driver.find_elements(By.CLASS_NAME,"inventory_item_price")
 second_price = prices[2]
-first_price = prices[0]
+first_price_by_elements = prices[0]
 for price in prices :
     text_by_loop = price.text
     print(text_by_loop)
