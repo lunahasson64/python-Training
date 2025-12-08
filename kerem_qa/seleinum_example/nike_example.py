@@ -15,3 +15,11 @@ driver.implicitly_wait(10)
 driver.get('https://www.nike.com/il/')
 Find_a_Store_link = driver.find_element(By.LINK_TEXT, "Find a Store")
 Find_a_Store_link.click()
+
+url = driver.current_url
+print(url)
+if url == 'https://www.nike.com/il/retail':
+    print("test ok - url as expected")
+else :
+    print(F"test failed - url not as expected, actual result is{Find_a_Store_link} ")
+driver.close()
