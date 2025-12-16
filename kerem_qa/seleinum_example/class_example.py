@@ -5,6 +5,7 @@ from kerem_qa.seleinum_example.seleniumBase import seleniumBaseDalya
 base = seleniumBaseDalya()
 driver = base.selenium_start_with_url("https://www.saucedemo.com/")
 
+
 user = driver.find_element(By.ID,"user-name")
 password = driver.find_element(By.ID,"password")
 login_button = driver.find_element(By.ID,"login-button")
