@@ -19,46 +19,11 @@ class welcom_page():
         secound_search_button.send_keys(Keys.ENTER)
 
         prices = self.driver.find_elements(By.CSS_SELECTOR,"ins[class='price-current price__amount price__amount--on-sale price-current--with-background']")
-        price_text = prices[0].text
-        lines = price_text.split("\n")
-        discounted_price = lines[-1].strip()
-        print(discounted_price)
-
-
-
-        # for i in range(len(prices)):
-        #     price_text = prices[i].text
-        #     lines = price_text.split("\n")
-        #     discounted_price = lines[-1].strip()
-        #     print(discounted_price)
-
-
-
-
-
-
-
-
-
-        # final_price = prices.text.split()
-        #
-        # for i in range(len(prices)):
-        #     print(prices[i].text)
-        #     prices_i_text = prices[i].text
-        #     if prices_i_text.text == "$":
-        #         text = prices_i_text[i + 1]
-        #         print(text)
-        #         return
-        #
-        #
-        #     dollar_index = prices_i_text.index("$")
-        #     main_price = prices_i_text[dollar_index:]
-        #     print(main_price)
-
-
-
-
-
+        for i in range(5):
+            price_text = prices[i].text
+            lines = price_text.split("\n")
+            last_price = lines[-1].strip()
+            print(last_price)
 
 
 
