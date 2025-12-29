@@ -3,6 +3,7 @@ import time
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
+from kerem_qa.zara_project.globals import PRODUCT
 
 
 class welcom_page():
@@ -11,7 +12,7 @@ class welcom_page():
         self.driver = driver
 
     def search_of_item(self, item):
-        self.driver.find_element(By.CSS_SELECTOR, "button[data-qa-action='stay-in-store']").click()
+        first_message = self.driver.find_element(By.CSS_SELECTOR, "button[data-qa-action='stay-in-store']").click()
         first_search_button = self.driver.find_element(By.CLASS_NAME, "layout-header-action-search__content").click()
         secound_search_button = self.driver.find_element(By.ID, "search-home-form-combo-input")
         secound_search_button.click()
@@ -55,13 +56,31 @@ class welcom_page():
         assert is_pass, "Shopping bag is not empty"
 
 
+
     def offices_button(self):
         first_message = self.driver.find_element(By.CSS_SELECTOR, "button[data-qa-action='stay-in-store']").click()
         first_search_button = self.driver.find_element(By.CLASS_NAME, "layout-header-action-search__content").click()
         offices_button = self.driver.find_element(By.PARTIAL_LINK_TEXT, "OFFICE")
         offices_button.click()
         url = self.driver.current_url
-        assert "https://www.zara.com/us/en/z-company-corp"in url, ("URL did not change after login")
+        assert "https://www.zara.com/us/en/z-company"in url, ("URL did not change after click on offices button")
+
+
+    def search_product(self, product):
+        first_message = self.driver.find_element(By.CSS_SELECTOR, "button[data-qa-action='stay-in-store']").click()
+        first_search_button = self.driver.find_element(By.CLASS_NAME, "layout-header-action-search__content").click()
+        secound_search_button = self.driver.find_element(By.ID, "search-home-form-combo-input")
+        secound_search_button.click()
+        secound_search_button.send_keys(PRODUCT)
+        secound_search_button.send_keys(Keys.ENTER)
+
+
+
+
+
+
+
+
 
 
 
