@@ -3,6 +3,7 @@ import unittest
 
 from selenium.webdriver.common.by import By
 
+from kerem_qa.zara_project.globals import ITEM
 from kerem_qa.zara_project.zara_pages.product import product
 from kerem_qa.zara_project.zara_pages.welcom_page import welcom_page
 from kerem_qa.zara_project.zara_test.selenium_zara_test import selenium_zara
@@ -20,18 +21,25 @@ class all_tests(unittest.TestCase):
         self.base.selenium_stop()
 
 
-    def test_search_and_price(self):
-        self.welcome_page.click_on_search_button()
+    def test_search_of_item_and_avg_prices(self):
+        self.welcome_page.search_of_item(ITEM)
+        self.product.avg_prices()
 
 
 
-    def test_search(self):
+    def test_fild_woman_man_kids(self):
         self.welcome_page.find_fild_woman_man_kids()
 
+
     def test_return_to_main_page(self):
-        self.welcome_page.help_page()
-        self.product.return_main_page()
-        time.sleep(3)
+        self.welcome_page.login_page()
+        self.product.return_to_main_page()
+
+
+    def test_travel_mode_find_france(self):
+        self.welcome_page.offices_button()
+
+
 
     def test_shopping_bag(self):
         self.welcome_page.shopping_page()
