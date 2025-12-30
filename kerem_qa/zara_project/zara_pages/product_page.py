@@ -1,5 +1,4 @@
 import time
-
 from kerem_qa.zara_project.zara_pages.locetors import product_page_locetors
 
 
@@ -17,15 +16,19 @@ class product():
     def avg_prices(self):
         prices = self.driver.find_elements(*product_page_locetors.PRICES)
         total = 0
-        for i in range(5):
-            price_text = prices[i].text
+        for price in range(min(5, len(prices))):
+            price_text = prices[price].text
             lines = price_text.split("\n")
             last_prices = lines[-1].strip()
             print(last_prices)
-            clean_price = last_prices.replace("$", "").strip()
-            clean_price = float(clean_price)
-            total += clean_price
-        print(f"$ {total}")
+            if "$" in last_prices:
+                clean_price = last_prices.replace("$", "").strip()
+                clean_price = float(clean_price)
+                total += clean_price
+            else:
+                print("Skipping non-price line:", last_prices)
+        print(f"total: {total}$")
+        return total
 
 
     def find_israel_in_offices_page(self):
@@ -47,7 +50,7 @@ class product():
         price_text_woman = price_item_woman[0].text
         lines_woman = price_text_woman.split("\n")
         last_prices_woman = lines_woman[-1].strip()
-        print(last_prices_woman)
+        print(f"price item for woman {last_prices_woman}")
 
         time.sleep(3)
         man_button = self.driver.find_elements(*product_page_locetors.MAN_BUTTON)[1]
@@ -56,10 +59,13 @@ class product():
         price_text_man = price_item_man[0].text
         lines_man = price_text_man.split("\n")
         last_prices_man = lines_man[-1].strip()
-        print(last_prices_man)
+        print(f"price item for man {last_prices_man}")
 
-        woman_price_number = float(last_prices_woman.replace("$", "").strip())
-        man_price_number = float(last_prices_man.replace("$", "").strip())
+        if "$" in last_prices_woman:
+            woman_price_number = float(last_prices_woman.replace("$", "").strip())
+
+        if "$" in last_prices_man:
+            man_price_number = float(last_prices_man.replace("$", "").strip())
 
         if woman_price_number > man_price_number:
             print("WOMAN is more expensive")

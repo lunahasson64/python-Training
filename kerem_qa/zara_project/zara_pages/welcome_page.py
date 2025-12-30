@@ -13,10 +13,10 @@ class welcome_page():
     def search_of_item(self, item):
         first_search_button = self.driver.find_element(*welcome_page_locetors.FIRST_SEARCH_BUTTON)
         first_search_button.click()
-        secound_search_button = self.driver.find_element(*welcome_page_locetors.SECOUND_SEARCH_BUTTON)
-        secound_search_button.click()
-        secound_search_button.send_keys(item)
-        secound_search_button.send_keys(Keys.ENTER)
+        second_search_button = self.driver.find_element(*welcome_page_locetors.SECOND_SEARCH_BUTTON)
+        second_search_button.click()
+        second_search_button.send_keys(item)
+        second_search_button.send_keys(Keys.ENTER)
 
 
 
@@ -56,10 +56,10 @@ class welcome_page():
     def search_product(self, product):
         first_search_button = self.driver.find_element(*welcome_page_locetors.FIRST_SEARCH_BUTTON)
         first_search_button.click()
-        secound_search_button = self.driver.find_element(*welcome_page_locetors.SECOUND_SEARCH_BUTTON)
-        secound_search_button.click()
-        secound_search_button.send_keys(PRODUCT)
-        secound_search_button.send_keys(Keys.ENTER)
+        second_search_button = self.driver.find_element(*welcome_page_locetors.SECOND_SEARCH_BUTTON)
+        second_search_button.click()
+        second_search_button.send_keys(PRODUCT)
+        second_search_button.send_keys(Keys.ENTER)
 
 
     def pop_up_message(self):

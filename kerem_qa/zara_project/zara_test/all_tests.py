@@ -20,6 +20,8 @@ class all_tests(unittest.TestCase):
     def test_search_of_item_and_avg_prices(self):
         self.welcome_page.pop_up_message()
         self.welcome_page.search_of_item(ITEM)
+        url = self.driver.current_url
+        assert url == "https://www.zara.com/us/en/search?searchTerm=shirt","url for search item failed"
         self.product.avg_prices()
 
 
@@ -32,6 +34,8 @@ class all_tests(unittest.TestCase):
         self.welcome_page.pop_up_message()
         self.welcome_page.login_page()
         self.product.return_to_main_page()
+        url = self.driver.current_url
+        assert url == "https://www.zara.com/us/","return to main page failed"
 
 
     def test_offices_Israel(self):
@@ -46,7 +50,6 @@ class all_tests(unittest.TestCase):
         self.welcome_page.pop_up_message()
         self.welcome_page.search_product(PRODUCT)
         self.product.woman_man_and_compare_prices()
-
 
 
 

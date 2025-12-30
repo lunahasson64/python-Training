@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 
 class welcome_page_locetors(object):
     FIRST_SEARCH_BUTTON = (By.CLASS_NAME, "layout-header-action-search__content")
-    SECOUND_SEARCH_BUTTON = (By.ID, "search-home-form-combo-input")
+    SECOND_SEARCH_BUTTON = (By.ID, "search-home-form-combo-input")
     THREE_LINES_IN_MAIN_PAGE = (By.CLASS_NAME, "layout-header-icon__icon")
     LOGIN_BUTTON = (By.CSS_SELECTOR, "li[class='layout-header-action layout-header-action--type-text layout-header-action-account']")
     OFFICES_BUTTON = (By.PARTIAL_LINK_TEXT, "OFFICE")
