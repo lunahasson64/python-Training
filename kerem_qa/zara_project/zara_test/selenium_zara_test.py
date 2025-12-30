@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium import webdriver
@@ -28,4 +29,6 @@ class selenium_zara():
     def selenium_stop(self):
         print("**** Test stop ****")
         self.driver.close()
+
+
 
