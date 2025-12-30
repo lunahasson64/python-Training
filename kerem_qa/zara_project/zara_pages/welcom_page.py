@@ -74,6 +74,17 @@ class welcom_page():
         secound_search_button.send_keys(PRODUCT)
         secound_search_button.send_keys(Keys.ENTER)
 
+    def help_page(self, ITEM_HELP):
+        first_message = self.driver.find_element(By.CSS_SELECTOR, "button[data-qa-action='stay-in-store']")
+        first_message.click()
+        help_button = self.driver.find_element(By.CSS_SELECTOR, "a[data-qa-id='notify-help-center-click']")
+        help_button.click()
+        help_search_button = self.driver.find_element(By.CSS_SELECTOR, 'div[class="zds-input-base help-search-box__search-box-input-container zds-input-base--full-width zds-input-base--has-placeholder"]')
+        help_search_button.click()
+        help_search_button.send_keys(ITEM_HELP)
+
+
+
 
 
 

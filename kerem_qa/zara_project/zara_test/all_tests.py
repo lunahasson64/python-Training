@@ -3,7 +3,7 @@ import unittest
 
 from selenium.webdriver.common.by import By
 
-from kerem_qa.zara_project.globals import ITEM, PRODUCT, ITEMM
+from kerem_qa.zara_project.globals import ITEM, PRODUCT, ITEM_SHOPPING_BAG, ITEM_HELP
 from kerem_qa.zara_project.zara_pages.product import product
 from kerem_qa.zara_project.zara_pages.welcom_page import welcom_page
 from kerem_qa.zara_project.zara_test.selenium_zara_test import selenium_zara
@@ -36,6 +36,8 @@ class all_tests(unittest.TestCase):
         self.product.return_to_main_page()
 
 
+
+
     def test_travel_mode_find_france(self):
         self.welcome_page.offices_button()
         self.product.find_israel_in_offices_page()
@@ -49,8 +51,13 @@ class all_tests(unittest.TestCase):
 
     def test_shopping_bag(self):
         self.welcome_page.shopping_page()
+        time.sleep(3)
         self.product.return_to_main_page()
-        self.product.add_to_shopping_bag(ITEMM)
+        self.product.add_to_shopping_bag(ITEM_SHOPPING_BAG)
+
+
+    def test_help_page(self):
+        self.welcome_page.help_page(ITEM_HELP)
 
 
 
