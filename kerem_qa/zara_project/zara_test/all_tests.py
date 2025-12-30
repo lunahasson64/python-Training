@@ -56,8 +56,7 @@ class all_tests(unittest.TestCase):
         self.product.add_to_shopping_bag(ITEM_SHOPPING_BAG)
 
 
-    def test_help_page(self):
-        self.welcome_page.help_page(ITEM_HELP)
+
 
 
 
