@@ -5,7 +5,7 @@ from kerem_qa.zara_project.globals import PRODUCT
 from kerem_qa.zara_project.zara_pages.locetors import welcome_page_locetors
 
 
-class welcome_page():
+class WelcomePage():
 
     def __init__(self, driver):
         self.driver = driver
@@ -26,15 +26,17 @@ class welcome_page():
 
         woman_button = self.driver.find_element(By.LINK_TEXT, "WOMAN")
         print(woman_button.text)
-        assert woman_button.text == "WOMAN","woman button is not  correctly"
+        # assert woman_button.text == "WOMAN","woman button is not  correctly"
 
         man_button = self.driver.find_element(By.LINK_TEXT, "MAN")
         print(man_button.text)
-        assert man_button.text == "MAN","man button is not  correctly"
+        # assert man_button.text == "MAN","man button is not  correctly"
 
         kids_button = self.driver.find_element(By.LINK_TEXT, "KIDS")
         print(kids_button.text)
-        assert kids_button.text == "KIDS","kids button is not  correctly"
+        # assert kids_button.text == "KIDS","kids button is not  correctly"
+
+        return woman_button, man_button, kids_button
 
 
 
@@ -62,7 +64,7 @@ class welcome_page():
         second_search_button.send_keys(Keys.ENTER)
 
 
-    def pop_up_message(self):
+    def close_pop_up_message(self):
         first_message = self.driver.find_element(*welcome_page_locetors.FIRST_MESSAGE)
         first_message.click()
 

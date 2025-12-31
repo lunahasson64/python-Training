@@ -2,15 +2,10 @@ import time
 from kerem_qa.zara_project.zara_pages.locetors import product_page_locetors
 
 
-class product():
+class ProductPage():
 
     def __init__(self, driver):
         self.driver = driver
-
-
-    def return_to_main_page(self):
-        zara_button = self.driver.find_element(*product_page_locetors.ZARA_BUTTON)
-        zara_button.click()
 
 
     def avg_prices(self):
@@ -38,41 +33,43 @@ class product():
 
 
 
-    def woman_man_and_compare_prices(self):
+
+    def woman_price(self):
         buttons = self.driver.find_elements(*product_page_locetors.BUTTONS)
-        # woman_button = buttons[0]
-        # woman_button.click()
         for button in buttons:
             if button.text.strip() == "Woman":
                 button.click()
                 break
         price_item_woman = self.driver.find_elements(*product_page_locetors.PRICE_ITEM_WOMAN)
-        price_text_woman = price_item_woman[0].text
+        if len(price_item_woman) > 0:
+            price_text_woman = price_item_woman[0].text
+        else:
+            print("No woman price found")
+            return None
         lines_woman = price_text_woman.split("\n")
         last_prices_woman = lines_woman[-1].strip()
         print(f"price item for woman {last_prices_woman}")
+        if "$" in last_prices_woman:
+            return float(last_prices_woman.replace("$", "").strip())
 
-        time.sleep(3)
-        man_button = self.driver.find_elements(*product_page_locetors.MAN_BUTTON)[1]
-        man_button.click()
+
+    def man_price(self):
+        man_button = self.driver.find_elements(*product_page_locetors.MAN_BUTTON)[1].click
         price_item_man = self.driver.find_elements(*product_page_locetors.PRICE_ITEM_MAN)
         price_text_man = price_item_man[0].text
         lines_man = price_text_man.split("\n")
         last_prices_man = lines_man[-1].strip()
         print(f"price item for man {last_prices_man}")
-
-        if "$" in last_prices_woman:
-            woman_price_number = float(last_prices_woman.replace("$", "").strip())
-
         if "$" in last_prices_man:
-            man_price_number = float(last_prices_man.replace("$", "").strip())
+            return float(last_prices_man.replace("$", "").strip())
 
-        if woman_price_number > man_price_number:
-            print("WOMAN is more expensive")
-        elif woman_price_number < man_price_number:
-            print("MAN is more expensive")
-        else:
-            print("Prices are same")
+
+
+
+
+
+
+
 
 
 
