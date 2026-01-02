@@ -28,9 +28,9 @@ class all_tests(unittest.TestCase):
         self.product.avg_prices()
 
 
-    def test_fild_woman_man_kids(self):
+    def test_buttons_woman_man_kids(self):
         self.welcome_page.close_pop_up_message()
-        woman_button, man_button,kids_button =  self.welcome_page.find_fild_woman_man_kids()
+        woman_button, man_button,kids_button =  self.welcome_page.find_woman_man_kids_buttons()
         assert woman_button.text.strip() == "WOMAN" and \
                man_button.text.strip() == "MAN" and \
                kids_button.text.strip() == "KIDS", "one or more buttons not found or incorrect"
@@ -50,6 +50,7 @@ class all_tests(unittest.TestCase):
         url = self.driver.current_url
         assert "https://www.zara.com/us/en/z-company" in url, ("URL did not change after click on offices button")
         self.product.find_israel_in_offices_page()
+
 
 
 

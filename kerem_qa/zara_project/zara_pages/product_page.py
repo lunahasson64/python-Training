@@ -1,4 +1,3 @@
-import time
 from kerem_qa.zara_project.zara_pages.locetors import product_page_locetors
 
 
@@ -13,22 +12,22 @@ class ProductPage():
         total = 0
         for price in range(min(5, len(prices))):
             price_text = prices[price].text
-            lines = price_text.split("\n")
-            last_prices = lines[-1].strip()
-            print(last_prices)
-            if "$" in last_prices:
-                clean_price = last_prices.replace("$", "").strip()
+            split_price_test = price_text.split("\n")
+            last_price = split_price_test[-1].strip()
+            print(last_price)
+            if "$" in last_price:
+                clean_price = last_price.replace("$", "").strip()
                 clean_price = float(clean_price)
                 total += clean_price
             else:
-                print("Skipping non-price line:", last_prices)
+                print("This price is incorrect")
         print(f"total: {total}$")
         return total
 
 
     def find_israel_in_offices_page(self):
         israel_button = self.driver.find_element(*product_page_locetors.ISRAEL_BUTTON)
-        assert israel_button.is_displayed(), "Israel office is not displayed"
+        assert israel_button.is_displayed(), "Israel office is not found"
         print(israel_button.text)
 
 
@@ -46,17 +45,27 @@ class ProductPage():
         else:
             print("No woman price found")
             return None
-        lines_woman = price_text_woman.split("\n")
-        last_prices_woman = lines_woman[-1].strip()
+        split_price_text_woman = price_text_woman.split("\n")
+        last_prices_woman = split_price_text_woman[-1].strip()
         print(f"price item for woman {last_prices_woman}")
         if "$" in last_prices_woman:
             return float(last_prices_woman.replace("$", "").strip())
 
 
     def man_price(self):
-        man_button = self.driver.find_elements(*product_page_locetors.MAN_BUTTON)[1].click
+        buttons = self.driver.find_elements(*product_page_locetors.MAN_BUTTON)
+        for button in buttons:
+            if button.text.strip() == "Man":
+                button.click()
+                break
         price_item_man = self.driver.find_elements(*product_page_locetors.PRICE_ITEM_MAN)
-        price_text_man = price_item_man[0].text
+        if len(price_item_man) > 0:
+            price_text_man = price_item_man[0].text
+        else:
+            print("No woman price found")
+            return None
+        # price_item_man = self.driver.find_elements(*product_page_locetors.PRICE_ITEM_MAN)
+        # price_text_man = price_item_man[0].text
         lines_man = price_text_man.split("\n")
         last_prices_man = lines_man[-1].strip()
         print(f"price item for man {last_prices_man}")
