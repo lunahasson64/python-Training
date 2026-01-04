@@ -1,3 +1,4 @@
+import time
 from kerem_qa.zara_project.zara_pages.locetors import product_page_locetors
 
 
@@ -8,9 +9,10 @@ class ProductPage():
 
 
     def avg_prices(self):
+        time.sleep(3)
         prices = self.driver.find_elements(*product_page_locetors.PRICES)
         total = 0
-        for price in range(min(5, len(prices))):
+        for price in range(10, 15):
             price_text = prices[price].text
             split_price_test = price_text.split("\n")
             last_price = split_price_test[-1].strip()
@@ -22,6 +24,7 @@ class ProductPage():
             else:
                 print("This price is incorrect")
         print(f"total: {total}$")
+        assert total > 0, "the total number is not valid"
         return total
 
 
@@ -39,6 +42,7 @@ class ProductPage():
             if button == "Woman":
                 button.click()
                 break
+        time.sleep(3)
         price_item_woman = self.driver.find_elements(*product_page_locetors.PRICE_ITEM_WOMAN)
         if len(price_item_woman) > 0:
             price_text_woman = price_item_woman[0].text
@@ -58,14 +62,13 @@ class ProductPage():
             if button == "Man":
                 button.click()
                 break
+        time.sleep(3)
         price_item_man = self.driver.find_elements(*product_page_locetors.PRICE_ITEM_MAN)
         if len(price_item_man) > 0:
             price_text_man = price_item_man[0].text
         else:
             print("No woman price found")
             return None
-        # price_item_man = self.driver.find_elements(*product_page_locetors.PRICE_ITEM_MAN)
-        # price_text_man = price_item_man[0].text
         lines_man = price_text_man.split("\n")
         last_prices_man = lines_man[-1].strip()
         print(f"price item for man {last_prices_man}")
