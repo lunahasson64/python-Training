@@ -36,7 +36,7 @@ class ProductPage():
     def woman_price(self):
         buttons = self.driver.find_elements(*product_page_locetors.BUTTONS)
         for button in buttons:
-            if button.text.strip() == "Woman":
+            if button == "Woman":
                 button.click()
                 break
         price_item_woman = self.driver.find_elements(*product_page_locetors.PRICE_ITEM_WOMAN)
@@ -55,7 +55,7 @@ class ProductPage():
     def man_price(self):
         buttons = self.driver.find_elements(*product_page_locetors.MAN_BUTTON)
         for button in buttons:
-            if button.text.strip() == "Man":
+            if button == "Man":
                 button.click()
                 break
         price_item_man = self.driver.find_elements(*product_page_locetors.PRICE_ITEM_MAN)

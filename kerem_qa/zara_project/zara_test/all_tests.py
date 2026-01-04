@@ -20,7 +20,7 @@ class all_tests(unittest.TestCase):
         self.base.selenium_stop()
 
 
-    def test_search_for_item_and_avg_prices(self):
+    def test_search_for_items_and_avg_prices(self):
         self.welcome_page.close_pop_up_message()
         self.welcome_page.search_of_item(ITEM)
         url = self.driver.current_url
