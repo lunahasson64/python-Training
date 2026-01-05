@@ -54,8 +54,8 @@ class all_tests(unittest.TestCase):
 
     def test_search_product_woman_man_and_compare_prices(self):
         self.welcome_page.search_product(PRODUCT)
-        woman_price = self.product_page.woman_price()
-        man_price = self.product_page.man_price()
+        woman_price = self.product_page.get_woman_price()
+        man_price = self.product_page.get_man_price()
         assert woman_price == man_price ,"Unexpected result"
         print("prices are the same")
 

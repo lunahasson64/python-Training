@@ -35,7 +35,7 @@ class ProductPage():
 
 
 
-    def woman_price(self):
+    def get_woman_price(self):
         buttons = self.driver.find_elements(*product_page_locetors.BUTTONS)
         for button in buttons:
             if button == "Woman":
@@ -55,7 +55,7 @@ class ProductPage():
             return float(last_prices_woman.replace("$", "").strip())
 
 
-    def man_price(self):
+    def get_man_price(self):
         buttons = self.driver.find_elements(*product_page_locetors.MAN_BUTTON)
         for button in buttons:
             if button == "Man":
