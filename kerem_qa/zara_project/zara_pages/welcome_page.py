@@ -24,25 +24,25 @@ class WelcomePage():
         three_lines_in_main_page.click()
 
         woman_button = self.driver.find_element(By.LINK_TEXT, "WOMAN")
-        print(woman_button.text)
+        print(f"woman button : {woman_button.text}")
 
         man_button = self.driver.find_element(By.LINK_TEXT, "MAN")
-        print(man_button.text)
+        print(f"man button : {man_button.text}")
 
         kids_button = self.driver.find_element(By.LINK_TEXT, "KIDS")
-        print(kids_button.text)
+        print(f"kids button : {kids_button.text}")
 
         return woman_button, man_button, kids_button
 
 
 
-    def login_page(self):
+    def click_login_page(self):
         login_button = self.driver.find_element(*welcome_page_locetors.LOGIN_BUTTON)
         login_button.click()
 
 
 
-    def offices_button(self):
+    def click_offices_button(self):
         first_search_button = self.driver.find_element(*welcome_page_locetors.FIRST_SEARCH_BUTTON)
         first_search_button.click()
         offices_button = self.driver.find_element(*welcome_page_locetors.OFFICES_BUTTON)
@@ -61,5 +61,5 @@ class WelcomePage():
 
 
     def close_pop_up_message(self):
-        first_message = self.driver.find_element(*welcome_page_locetors.FIRST_MESSAGE)
+        first_message = self.driver.find_element(*welcome_page_locetors.CLOSE_FIRST_MESSAGE)
         first_message.click()

@@ -7,7 +7,7 @@ class welcome_page_locetors(object):
     THREE_LINES_IN_MAIN_PAGE = (By.CLASS_NAME, "layout-header-icon__icon")
     LOGIN_BUTTON = (By.CSS_SELECTOR, "li[class='layout-header-action layout-header-action--type-text layout-header-action-account']")
     OFFICES_BUTTON = (By.PARTIAL_LINK_TEXT, "OFFICE")
-    FIRST_MESSAGE = (By.CSS_SELECTOR, "button[data-qa-action='stay-in-store']")
+    CLOSE_FIRST_MESSAGE = (By.CSS_SELECTOR, "button[data-qa-action='stay-in-store']")
 
 
 

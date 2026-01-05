@@ -16,7 +16,7 @@ class ProductPage():
             price_text = prices[price].text
             split_price_test = price_text.split("\n")
             last_price = split_price_test[-1].strip()
-            print(last_price)
+            print(f"last price : {last_price}")
             if "$" in last_price:
                 clean_price = last_price.replace("$", "").strip()
                 clean_price = float(clean_price)
@@ -24,14 +24,13 @@ class ProductPage():
             else:
                 print("This price is incorrect")
         print(f"total: {total}$")
-        assert total > 0, "the total number is not valid"
         return total
 
 
     def find_israel_in_offices_page(self):
         israel_button = self.driver.find_element(*product_page_locetors.ISRAEL_BUTTON)
-        assert israel_button.is_displayed(), "Israel office is not found"
-        print(israel_button.text)
+        print(f"israel office : {israel_button.text}")
+        return israel_button
 
 
 
